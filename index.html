@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Pembelajaran Interaktif: Getaran & Gelombang</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- MathJax for Beautiful Equations -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #050914;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #3b82f6;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #2563eb;
+        }
+    </style>
+</head>
+<body class="bg-[#030712] text-slate-100 min-h-screen flex flex-col custom-scrollbar">
+
+    <!-- Header Navigation -->
+    <header class="bg-gradient-to-r from-[#4c0519] via-[#0c142c] to-[#050915] text-white shadow-lg border-b border-[#1e2a4a] sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-3">
+            <div class="flex items-center gap-3">
+                <div class="p-2 bg-blue-500/10 rounded-lg border border-blue-500/30">
+                    <i class="fa-solid fa-wave-square text-2xl text-blue-400 animate-pulse"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg leading-tight text-white">Getaran & Gelombang</h1>
+                    <p class="text-xs text-blue-400 font-light">Fisika SMP Kelas VIII • Media Interaktif</p>
+                </div>
+            </div>
+            
+            <nav class="flex flex-wrap justify-center gap-1 bg-[#0b1226] p-1 rounded-xl border border-[#1e2a4a] text-sm">
+                <button onclick="switchTab('beranda')" id="btn-beranda" class="tab-btn px-4 py-2 rounded-lg font-medium transition duration-200 bg-blue-600 text-white shadow-sm">
+                    <i class="fa-solid fa-home mr-1"></i> Beranda
+                </button>
+                <button onclick="switchTab('getaran')" id="btn-getaran" class="tab-btn px-4 py-2 rounded-lg font-medium transition duration-200 text-slate-300 hover:bg-[#1a2544] hover:text-white">
+                    <i class="fa-solid fa-arrows-left-right mr-1"></i> Getaran
+                </button>
+                <button onclick="switchTab('gelombang')" id="btn-gelombang" class="tab-btn px-4 py-2 rounded-lg font-medium transition duration-200 text-slate-300 hover:bg-[#1a2544] hover:text-white">
+                    <i class="fa-solid fa-water mr-1"></i> Gelombang
+                </button>
+                <button onclick="switchTab('kuis')" id="btn-kuis" class="tab-btn px-4 py-2 rounded-lg font-medium transition duration-200 text-slate-300 hover:bg-[#1a2544] hover:text-white">
+                    <i class="fa-solid fa-graduation-cap mr-1"></i> Kuis Evaluasi
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto p-4 sm:p-6">
+        
+        <!-- ================= BERANDA SECTION ================= -->
+        <section id="tab-beranda" class="tab-content block">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 bg-[#4c0519]/50 border border-[#9f1239]/40 text-rose-300 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
+                        <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span> Kurikulum Merdeka / K13
+                    </div>
+                    <h2 class="text-4xl sm:text-5xl font-extrabold text-white leading-tight">
+                        Petualangan Seru Belajar <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-rose-400">Fisika Gelombang!</span>
+                    </h2>
+                    <p class="text-slate-300 text-lg leading-relaxed">
+                        Halo, calon ilmuwan muda! Selamat datang di modul interaktif. Di sini kamu tidak hanya membaca teks membosankan, tetapi bisa **memainkan simulator**, mengubah parameter, dan menguji kemampuanmu lewat kuis seru. Yuk, mulai petualangan belajarmu sekarang!
+                    </p>
+                    <div class="flex flex-wrap gap-3 pt-2">
+                        <button onclick="switchTab('getaran')" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg shadow-blue-500/10 transition transform hover:-translate-y-0.5">
+                            Mulai Belajar Getaran <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </button>
+                        <button onclick="switchTab('kuis')" class="px-6 py-3 bg-[#1e2a4a] hover:bg-[#25355c] text-white font-bold rounded-xl border border-blue-500/30 transition">
+                            Coba Kuis Keren <i class="fa-solid fa-trophy ml-2 text-yellow-400"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-sm aspect-square bg-gradient-to-br from-[#0c142c] to-[#1e2a4a] border border-[#2b3a67] rounded-3xl p-6 shadow-2xl flex flex-col justify-between overflow-hidden">
+                        <!-- Simulated Waves background graphics -->
+                        <div class="absolute inset-0 opacity-10 flex flex-col justify-around">
+                            <div class="h-2 w-full bg-blue-400 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+                            <div class="h-2 w-full bg-rose-400 rounded-full animate-bounce" style="animation-delay: 0.3s"></div>
+                            <div class="h-2 w-full bg-blue-300 rounded-full animate-bounce" style="animation-delay: 0.5s"></div>
+                        </div>
+                        
+                        <div class="flex justify-between items-start z-10">
+                            <span class="text-xs font-bold text-blue-300 bg-[#070b19]/80 border border-blue-500/30 px-2.5 py-1 rounded-md">KELAS 8 SMP</span>
+                            <i class="fa-solid fa-atom text-4xl text-rose-500 animate-spin" style="animation-duration: 8s;"></i>
+                        </div>
+                        
+                        <div class="text-center my-6 z-10">
+                            <div class="text-7xl mb-2">🌊</div>
+                            <span class="block text-2xl font-bold text-slate-100">Fisika Itu Seru!</span>
+                        </div>
+                        
+                        <div class="bg-[#050914]/90 backdrop-blur-sm p-4 rounded-2xl border border-[#1e2a4a] z-10 shadow-lg text-center">
+                            <p class="text-xs text-slate-400">Tahukah kamu?</p>
+                            <p class="text-sm font-semibold text-blue-400">Bunyi dapat merambat karena molekul udara bergetar membuat rapatan & renggangan!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Petunjuk Belajar Cards -->
+            <div class="mt-16">
+                <h3 class="text-xl font-bold text-slate-100 mb-6 text-center">Alur Pembelajaran Interaktif</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-[#0e162f] p-6 rounded-2xl shadow-md border border-[#1e2a4a] hover:border-blue-500/30 transition">
+                        <div class="w-12 h-12 rounded-xl bg-blue-950/60 border border-blue-500/20 flex items-center justify-center text-blue-400 text-xl font-bold mb-4">
+                            1
+                        </div>
+                        <h4 class="font-bold text-slate-100 mb-2">Pelajari Getaran</h4>
+                        <p class="text-sm text-slate-400">Pahami konsep amplitudo, frekuensi, dan periode melalui simulasi bandul langsung secara visual.</p>
+                    </div>
+                    <div class="bg-[#0e162f] p-6 rounded-2xl shadow-md border border-[#1e2a4a] hover:border-rose-500/30 transition">
+                        <div class="w-12 h-12 rounded-xl bg-rose-950/60 border border-rose-500/20 flex items-center justify-center text-rose-400 text-xl font-bold mb-4">
+                            2
+                        </div>
+                        <h4 class="font-bold text-slate-100 mb-2">Eksplorasi Gelombang</h4>
+                        <p class="text-sm text-slate-400">Lihat bedanya gelombang transversal & longitudinal secara nyata dan temukan rumus cepat rambatnya.</p>
+                    </div>
+                    <div class="bg-[#0e162f] p-6 rounded-2xl shadow-md border border-[#1e2a4a] hover:border-blue-500/30 transition">
+                        <div class="w-12 h-12 rounded-xl bg-blue-950/60 border border-blue-500/20 flex items-center justify-center text-blue-400 text-xl font-bold mb-4">
+                            3
+                        </div>
+                        <h4 class="font-bold text-slate-100 mb-2">Uji Kemampuan Kuis</h4>
+                        <p class="text-sm text-slate-400">Kerjakan 10 soal kuis adaptif. Dilengkapi skor instan, kunci jawaban, dan pembahasan interaktif yang detail.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= GETARAN SECTION ================= -->
+        <section id="tab-getaran" class="tab-content hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Textual Explanation Column -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="bg-[#0e162f] p-6 rounded-2xl shadow-sm border border-[#1e2a4a] space-y-4">
+                        <h3 class="text-2xl font-bold text-slate-100 flex items-center gap-2">
+                            <span class="text-blue-400"><i class="fa-solid fa-circle-nodes"></i></span> Apa Itu Getaran?
+                        </h3>
+                        <p class="text-slate-300 leading-relaxed text-sm">
+                            **Getaran** didefinisikan sebagai gerak bolak-balik secara berkala (periodik) melalui suatu titik kesetimbangan. Benda dikatakan melakukan getaran apabila benda bergerak bolak-balik dari titik awal lalu kembali lagi ke titik awal tersebut.
+                        </p>
+                        
+                        <div class="bg-[#4c0519]/40 border-l-4 border-rose-600 p-3 rounded-r-lg text-xs text-rose-300">
+                            <strong>💡 Contoh di kehidupan nyata:</strong> Senar gitar yang dipetik, ayunan anak-anak, kepakan sayap lebah, dan bandul jam dinding tua.
+                        </div>
+                    </div>
+
+                    <div class="bg-[#0e162f] p-6 rounded-2xl shadow-sm border border-[#1e2a4a] space-y-4">
+                        <h3 class="text-xl font-bold text-slate-100">Istilah Penting pada Getaran</h3>
+                        
+                        <div class="space-y-3">
+                            <div class="p-3 bg-[#050914] rounded-xl border border-[#1e2a4a]">
+                                <span class="font-bold text-blue-400 block text-sm">1. Amplitudo (A)</span>
+                                <span class="text-xs text-slate-400">Simpangan terjauh dari titik kesetimbangan. Diukur dalam satuan **meter (m)** atau **cm**.</span>
+                            </div>
+                            <div class="p-3 bg-[#050914] rounded-xl border border-[#1e2a4a]">
+                                <span class="font-bold text-blue-400 block text-sm">2. Periode (T)</span>
+                                <span class="text-xs text-slate-400">Waktu yang diperlukan untuk menempuh **satu getaran penuh**. Satuannya adalah **sekon (s)**.</span>
+                            </div>
+                            <div class="p-3 bg-[#050914] rounded-xl border border-[#1e2a4a]">
+                                <span class="font-bold text-blue-400 block text-sm">3. Frekuensi (f)</span>
+                                <span class="text-xs text-slate-400">Jumlah getaran penuh yang terjadi dalam waktu **satu sekon**. Satuannya adalah **Hertz (Hz)**.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-[#0e162f] p-6 rounded-2xl shadow-sm border border-[#1e2a4a] space-y-4">
+                        <h3 class="text-xl font-bold text-slate-100">Rumus-Rumus Sakti Getaran</h3>
+                        <div class="grid grid-cols-2 gap-3 text-center">
+                            <div class="p-3 bg-blue-950/30 rounded-xl border border-blue-500/20">
+                                <span class="text-xs text-slate-400 block mb-1">Mencari Periode ($T$)</span>
+                                <span class="text-lg font-bold text-blue-400">$$T = \frac{t}{n}$$</span>
+                            </div>
+                            <div class="p-3 bg-blue-950/30 rounded-xl border border-blue-500/20">
+                                <span class="text-xs text-slate-400 block mb-1">Mencari Frekuensi ($f$)</span>
+                                <span class="text-lg font-bold text-blue-400">$$f = \frac{n}{t}$$</span>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-[#4c0519]/30 rounded-xl border border-rose-500/20 text-center">
+                            <span class="text-xs text-slate-400 block mb-1">Hubungan Timbal Balik keduanya</span>
+                            <span class="text-lg font-bold text-rose-400">$$f = \frac{1}{T} \quad \text{atau} \quad T = \frac{1}{f}$$</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simulator Column -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="bg-[#0e162f] p-6 rounded-2xl shadow-md border border-[#1e2a4a] flex flex-col">
+                        <div class="mb-4 flex justify-between items-start">
+                            <div>
+                                <span class="bg-blue-950 text-blue-400 text-xs font-bold px-2.5 py-1 rounded-full border border-blue-500/20"><i class="fa-solid fa-flask mr-1"></i> LAB SIMULATOR</span>
+                                <h3 class="text-lg font-bold text-slate-100 mt-2">Simulasi Bandul & Pelukis Gelombang</h3>
+                                <p class="text-xs text-slate-400">Gerakan bandul (getaran) melukis simpangan waktu (gelombang)!</p>
+                            </div>
+                            <div class="flex gap-2">
+                                <button id="btn-pendulum-play" onclick="togglePendulumPlay()" class="px-3 py-1.5 rounded-lg bg-blue-600 text-white font-bold text-xs hover:bg-blue-500 transition flex items-center gap-1">
+                                    <i class="fa-solid fa-pause" id="icon-pendulum-play"></i> <span id="text-pendulum-play">Jeda</span>
+                                </button>
+                                <button onclick="resetPendulumTrace()" class="px-3 py-1.5 rounded-lg bg-[#050914] text-white border border-[#1e2a4a] font-bold text-xs hover:bg-slate-800 transition">
+                                    Reset Grafik
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Canvas Area -->
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-3 bg-[#050914] rounded-xl overflow-hidden p-2 border border-[#1e2a4a]">
+                            <!-- Pendulum Canvas -->
+                            <div class="md:col-span-5 h-[240px] relative border-r border-[#1e2a4a]/80">
+                                <canvas id="pendulumCanvas" width="220" height="240" class="w-full h-full"></canvas>
+                                <div class="absolute bottom-2 left-2 text-[10px] text-slate-500 bg-[#050914]/80 px-2 py-0.5 rounded border border-[#1e2a4a]">Bandul (Getaran)</div>
+                            </div>
+                            <!-- Wave-Trace Canvas -->
+                            <div class="md:col-span-7 h-[240px] relative">
+                                <canvas id="pendulumTraceCanvas" width="320" height="240" class="w-full h-full"></canvas>
+                                <div class="absolute bottom-2 left-2 text-[10px] text-slate-500 bg-[#050914]/80 px-2 py-0.5 rounded border border-[#1e2a4a]">Grafik Simpangan Waktu (Gelombang)</div>
+                            </div>
+                        </div>
+
+                        <!-- Controls -->
+                        <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <div class="flex justify-between text-xs font-semibold mb-1">
+                                    <span>Panjang Tali (L): <span id="val-length" class="text-blue-400">120 cm</span></span>
+                                </div>
+                                <input id="slider-length" type="range" min="60" max="200" value="120" class="w-full accent-blue-600 cursor-pointer">
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-semibold mb-1">
+                                    <span>Gaya Gravitasi (g): <span id="val-gravity" class="text-blue-400">9.8 m/s²</span></span>
+                                </div>
+                                <input id="slider-gravity" type="range" min="2" max="25" step="0.1" value="9.8" class="w-full accent-blue-600 cursor-pointer">
+                            </div>
+                        </div>
+
+                        <!-- Real-time Output -->
+                        <div class="grid grid-cols-2 gap-4 mt-5 bg-[#050914] p-3 rounded-xl border border-[#1e2a4a]">
+                            <div class="text-center">
+                                <span class="text-[10px] text-slate-400 uppercase tracking-wider block font-semibold">Periode (T) Teoretis</span>
+                                <span id="calc-period" class="text-xl font-black text-blue-400">0.00 s</span>
+                            </div>
+                            <div class="text-center">
+                                <span class="text-[10px] text-slate-400 uppercase tracking-wider block font-semibold">Frekuensi (f) Teoretis</span>
+                                <span id="calc-frequency" class="text-xl font-black text-blue-400">0.00 Hz</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 text-[11px] text-slate-400 leading-relaxed bg-[#050914]/50 p-2.5 rounded-lg border border-[#1e2a4a]/50">
+                            💡 **Rahasia Animasi Berjalan:** Gelombang sebenarnya dibentuk dari kumpulan getaran-getaran yang merambat seiring berjalannya waktu! Grafik di atas menggambar posisi bola bandul (getaran) terhadap waktu untuk membuktikan hal ini secara nyata.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= GELOMBANG SECTION ================= -->
+        <section id="tab-gelombang" class="tab-content hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Left Column: Wave Simulator -->
+                <div class="lg:col-span-7 space-y-6 order-2 lg:order-1">
+                    <div class="bg-[#0e162f] p-6 rounded-2xl shadow-md border border-[#1e2a4a]">
+                        <div class="mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                            <div>
+                                <span class="bg-[#4c0519] text-rose-300 text-xs font-bold px-2.5 py-1 rounded-full border border-rose-500/20"><i class="fa-solid fa-sliders mr-1"></i> SIMULATOR VISUAL</span>
+                                <h3 class="text-lg font-bold text-slate-100 mt-2">Simulator Gelombang Berjalan</h3>
+                            </div>
+                            <!-- Tab switches for waves -->
+                            <div class="flex flex-wrap gap-1 bg-[#050914] p-1 rounded-lg text-xs border border-[#1e2a4a]">
+                                <button onclick="setWaveType('transversal')" id="btn-wave-trans" class="px-2 py-1.5 rounded-md font-semibold bg-blue-600 text-white shadow-sm transition">Transversal</button>
+                                <button onclick="setWaveType('longitudinal')" id="btn-wave-long" class="px-2 py-1.5 rounded-md font-semibold text-slate-400 hover:text-slate-100 transition">Longitudinal</button>
+                                <button onclick="setWaveType('stasioner')" id="btn-wave-station" class="px-2 py-1.5 rounded-md font-semibold text-slate-400 hover:text-slate-100 transition">Stasioner</button>
+                            </div>
+                        </div>
+
+                        <!-- Canvas area for wave -->
+                        <div class="bg-[#050914] rounded-xl overflow-hidden h-[230px] relative border border-[#1e2a4a]">
+                            <canvas id="waveCanvas" width="600" height="230" class="w-full h-full"></canvas>
+                            <!-- Visual overlays -->
+                            <div class="absolute top-2 right-2 flex flex-col gap-1.5">
+                                <label class="flex items-center gap-1.5 bg-[#0e162f]/90 border border-[#1e2a4a] text-[10px] px-2 py-1 rounded cursor-pointer">
+                                    <input type="checkbox" id="chk-show-particle" checked class="accent-blue-500">
+                                    <span>Tampilkan Partikel Penanda</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Play / Pause / Speed Controls -->
+                        <div class="mt-4 flex flex-wrap gap-3 items-center justify-between bg-[#050914] p-3 rounded-xl border border-[#1e2a4a]">
+                            <button id="btn-wave-play" onclick="toggleWavePlay()" class="px-4 py-2 rounded-lg bg-[#800020] hover:bg-[#990026] text-white font-bold text-xs transition flex items-center gap-1.5">
+                                <i class="fa-solid fa-pause" id="icon-wave-play"></i> <span id="text-wave-play">Jeda Animasi</span>
+                            </button>
+                            
+                            <div class="flex items-center gap-2 flex-grow max-w-xs">
+                                <span class="text-xs text-slate-400 whitespace-nowrap">Kecepatan Rambat (v):</span>
+                                <input id="slider-wave-speed" type="range" min="1" max="5" step="0.5" value="3" class="w-full accent-rose-500 cursor-pointer">
+                                <span id="val-wave-speed" class="text-xs text-rose-400 font-bold w-12">3.0</span>
+                            </div>
+                        </div>
+
+                        <!-- Wave Parameter Sliders -->
+                        <div class="mt-4 space-y-3">
+                            <div>
+                                <div class="flex justify-between text-xs font-semibold mb-1">
+                                    <span>Amplitudo (A): <span id="val-wave-amp" class="text-rose-400">30</span></span>
+                                </div>
+                                <input id="slider-wave-amp" type="range" min="5" max="60" value="30" class="w-full accent-rose-500 cursor-pointer">
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-semibold mb-1">
+                                    <span>Frekuensi (f): <span id="val-wave-freq" class="text-rose-400">1.5 Hz</span></span>
+                                </div>
+                                <input id="slider-wave-freq" type="range" min="0.5" max="4.0" step="0.1" value="1.5" class="w-full accent-rose-500 cursor-pointer">
+                            </div>
+                        </div>
+
+                        <!-- Explanation inside simulator card -->
+                        <div class="mt-4 p-3 bg-[#4c0519]/30 text-xs text-rose-300 rounded-xl border border-rose-500/20">
+                            <div id="wave-desc-panel">
+                                <span class="font-bold block mb-1">Gelombang Transversal (Matahari, Tali, Air)</span>
+                                Arah getarnya **tegak lurus** dengan arah rambat. 1 Gelombang penuh terdiri dari **1 bukit** dan **1 lembah**.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Materials -->
+                <div class="lg:col-span-5 space-y-6 order-1 lg:order-2">
+                    <div class="bg-[#0e162f] p-6 rounded-2xl shadow-sm border border-[#1e2a4a] space-y-4">
+                        <h3 class="text-2xl font-bold text-slate-100 flex items-center gap-2">
+                            <span class="text-rose-400"><i class="fa-solid fa-water"></i></span> Apa Itu Gelombang?
+                        </h3>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            **Gelombang** adalah getaran yang merambat. Hal yang paling luar biasa dari gelombang adalah ketika ia merambat, ia **hanya memindahkan energi**, sementara partikel mediumnya (seperti air atau tali) hanya bergerak naik turun di tempatnya tanpa ikut mengalir ke ujung tujuan!
+                        </p>
+                    </div>
+
+                    <div class="bg-[#0e162f] p-6 rounded-2xl shadow-sm border border-[#1e2a4a] space-y-4">
+                        <h3 class="text-lg font-bold text-slate-100">Gelombang Berjalan vs Stasioner</h3>
+                        <div class="space-y-4 text-xs">
+                            <div class="border-l-4 border-blue-500 pl-3">
+                                <span class="font-bold text-slate-200 text-sm block">1. Gelombang Berjalan:</span>
+                                <p class="text-slate-400 mt-1">
+                                    Gelombang yang amplitudonya **selalu tetap** pada setiap titik yang dilaluinya. Contoh: Gelombang pada tali panjang yang digetarkan terus-menerus.
+                                </p>
+                            </div>
+                            <div class="border-l-4 border-[#800020] pl-3">
+                                <span class="font-bold text-slate-200 text-sm block">2. Gelombang Stasioner (Diam):</span>
+                                <p class="text-slate-400 mt-1">
+                                    Gelombang yang amplitudonya **berubah-ubah** bergantung pada posisinya. Hasil perpaduan dari gelombang datang dan gelombang pantul. Memiliki titik diam (Simpul) dan titik puncak (Perut). Contoh: Senar gitar yang dipetik.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-[#0e162f] p-6 rounded-2xl shadow-sm border border-[#1e2a4a] space-y-4">
+                        <h3 class="text-lg font-bold text-slate-100">Rumus Rambat Gelombang 🌊</h3>
+                        <div class="p-4 bg-[#4c0519]/30 rounded-xl text-center border border-rose-500/20">
+                            <span class="text-lg font-bold text-rose-400">$$v = \lambda \times f \quad \text{atau} \quad v = \frac{\lambda}{T}$$</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= KUIS SECTION ================= -->
+        <section id="tab-kuis" class="tab-content hidden">
+            <!-- Quiz Introduction Dashboard -->
+            <div id="quiz-intro" class="bg-[#0e162f] p-8 rounded-3xl shadow-2xl border border-[#1e2a4a] max-w-3xl mx-auto text-center space-y-6">
+                <div class="w-20 h-20 bg-[#4c0519]/40 border border-rose-500/20 rounded-full flex items-center justify-center mx-auto text-4xl shadow-inner">
+                    🏆
+                </div>
+                <div class="space-y-2">
+                    <h3 class="text-3xl font-extrabold text-white">Asah Otak: Kuis Getaran & Gelombang</h3>
+                    <p class="text-slate-400 text-sm max-w-md mx-auto">Evaluasi pemahamanmu melalui 10 soal interaktif berstandar ujian sekolah kelas 8 SMP. Bersiaplah!</p>
+                </div>
+
+                <div class="grid grid-cols-3 gap-4 max-w-sm mx-auto text-center">
+                    <div class="p-3 bg-[#050914] rounded-xl border border-[#1e2a4a]">
+                        <span class="block font-bold text-lg text-blue-400">10</span>
+                        <span class="text-[10px] text-slate-500 uppercase font-semibold">Total Soal</span>
+                    </div>
+                    <div class="p-3 bg-[#050914] rounded-xl border border-[#1e2a4a]">
+                        <span class="block font-bold text-lg text-rose-400">80+</span>
+                        <span class="text-[10px] text-slate-500 uppercase font-semibold">Target Skor</span>
+                    </div>
+                    <div class="p-3 bg-[#050914] rounded-xl border border-[#1e2a4a]">
+                        <span class="block font-bold text-lg text-blue-400">Pilihan</span>
+                        <span class="text-[10px] text-slate-500 uppercase font-semibold">Ganda</span>
+                    </div>
+                </div>
+
+                <button onclick="startQuiz()" class="w-full max-w-sm py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-2xl shadow-lg shadow-blue-500/10 transition transform hover:-translate-y-0.5">
+                    Mulai Kerjakan Kuis Sekarang
+                </button>
+            </div>
+
+            <!-- Quiz Play Area -->
+            <div id="quiz-play" class="hidden max-w-3xl mx-auto">
+                <!-- Progress Header -->
+                <div class="bg-[#0e162f] p-4 rounded-t-2xl border-b border-[#1e2a4a] flex justify-between items-center">
+                    <span class="text-xs font-bold text-slate-400">SOAL <span id="current-question-num" class="text-blue-400">1</span> DARI 10</span>
+                    <div class="w-1/2 bg-[#050914] h-2 rounded-full overflow-hidden border border-[#1e2a4a]">
+                        <div id="quiz-progress-bar" class="bg-blue-500 h-full w-[10%] transition-all duration-300"></div>
+                    </div>
+                    <div class="flex items-center gap-1.5 text-xs font-semibold bg-blue-950/80 text-blue-400 px-2.5 py-1 rounded-lg border border-blue-500/20">
+                        <i class="fa-solid fa-square-poll-vertical"></i> Skor Saat Ini: <span id="quiz-live-score">0</span>
+                    </div>
+                </div>
+
+                <!-- Main Card -->
+                <div class="bg-[#0e162f] p-6 sm:p-8 rounded-b-2xl shadow-xl border border-[#1e2a4a] space-y-6">
+                    <!-- Hint Button -->
+                    <div class="flex justify-between items-center">
+                        <button onclick="showHint()" class="text-xs text-blue-400 hover:text-blue-300 font-bold flex items-center gap-1">
+                            <i class="fa-regular fa-lightbulb"></i> Butuh petunjuk?
+                        </button>
+                        <span id="hint-box" class="hidden text-xs text-rose-300 bg-[#4c0519]/40 px-3 py-1 rounded-lg border border-rose-500/20 max-w-xs animate-fade-in"></span>
+                    </div>
+
+                    <!-- Question Text -->
+                    <h4 id="question-text" class="text-lg sm:text-xl font-bold text-white leading-relaxed">
+                        -- Memuat Soal... --
+                    </h4>
+
+                    <!-- Options Area -->
+                    <div id="options-container" class="grid grid-cols-1 gap-3">
+                        <!-- Options generated dynamically -->
+                    </div>
+
+                    <!-- Next button area -->
+                    <div id="explanation-container" class="hidden bg-[#050914] p-4 rounded-xl border border-[#1e2a4a] animate-fade-in">
+                        <div class="flex gap-2 items-start">
+                            <span id="explanation-icon" class="text-lg"></span>
+                            <div>
+                                <h5 class="font-bold text-xs uppercase tracking-wider text-slate-400 mb-1">Rasional & Pembahasan</h5>
+                                <p id="explanation-text" class="text-xs text-slate-300 leading-relaxed"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-end pt-4">
+                        <button id="btn-next-question" onclick="nextQuestion()" disabled class="px-6 py-3 bg-[#050914] text-slate-500 font-bold rounded-xl cursor-not-allowed transition duration-150">
+                            Lanjut <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Results Screen -->
+            <div id="quiz-results" class="hidden max-w-2xl mx-auto bg-[#0e162f] p-8 rounded-3xl shadow-2xl border border-[#1e2a4a] text-center space-y-6">
+                <div id="result-badge" class="w-24 h-24 rounded-full flex items-center justify-center mx-auto text-5xl">
+                    🎉
+                </div>
+                <h3 class="text-3xl font-black text-white" id="result-title">Hebat Sekali!</h3>
+                <p id="result-message" class="text-slate-400 text-sm max-w-md mx-auto"></p>
+                
+                <div class="p-6 bg-[#050914] rounded-2xl max-w-md mx-auto grid grid-cols-2 gap-4 border border-[#1e2a4a]">
+                    <div class="border-r border-[#1e2a4a]">
+                        <span class="block text-3xl font-black text-blue-400" id="result-score">0</span>
+                        <span class="text-[10px] text-slate-500 font-bold uppercase">Skor Akhir</span>
+                    </div>
+                    <div>
+                        <span class="block text-3xl font-black text-rose-400" id="result-correct">0/10</span>
+                        <span class="text-[10px] text-slate-500 font-bold uppercase">Benar</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row justify-center gap-3">
+                    <button onclick="startQuiz()" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition shadow-lg shadow-blue-500/10">
+                        <i class="fa-solid fa-rotate-right mr-1"></i> Coba Kuis Lagi
+                    </button>
+                    <button onclick="switchTab('beranda')" class="px-6 py-3 bg-[#050914] hover:bg-slate-800 text-white font-bold rounded-xl border border-[#1e2a4a] transition">
+                        Kembali ke Beranda
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#050914] text-slate-500 py-6 border-t border-[#1e2a4a] text-center text-xs mt-8">
+        <div class="max-w-7xl mx-auto px-4 space-y-2">
+            <p class="font-medium text-slate-400">Aplikasi Media Pembelajaran Interaktif Getaran & Gelombang</p>
+            <p>Dibuat khusus untuk Pembelajaran IPA Kelas 8 SMP.</p>
+            <p class="text-[10px] text-slate-700">© 2026 Pembelajaran Interaktif Mandiri.</p>
+        </div>
+    </footer>
+
+    <!-- JS Logic & Physics Engines -->
+    <script>
+        // Tab Switcher
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.add('hidden');
+                tab.classList.remove('block');
+            });
+            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+            document.getElementById(`tab-${tabId}`).classList.add('block');
+
+            // Button Styles Switch
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.className = "tab-btn px-4 py-2 rounded-lg font-medium transition duration-200 text-slate-300 hover:bg-[#1a2544] hover:text-white";
+            });
+            
+            const activeBtn = document.getElementById(`btn-${tabId}`);
+            if (activeBtn) {
+                activeBtn.className = "tab-btn px-4 py-2 rounded-lg font-medium transition duration-200 bg-blue-600 text-white shadow-sm";
+            }
+
+            // Start loop animations when on simulator tabs
+            if (tabId === 'getaran') {
+                if (!pendulumRunning) {
+                    pendulumRunning = true;
+                    requestAnimationFrame(animatePendulum);
+                }
+            } else {
+                pendulumRunning = false;
+            }
+
+            if (tabId === 'gelombang') {
+                if (!waveRunning) {
+                    waveRunning = true;
+                    requestAnimationFrame(animateWave);
+                }
+            } else {
+                waveRunning = false;
+            }
+        }
+
+        // ================== PENDULUM SIMULATOR PHYSICS ==================
+        const pCanvas = document.getElementById('pendulumCanvas');
+        const pCtx = pCanvas.getContext('2d');
+        const ptCanvas = document.getElementById('pendulumTraceCanvas');
+        const ptCtx = ptCanvas.getContext('2d');
+        
+        let pendulumRunning = true; // active by default when tab is loaded
+        let pendulumPlayState = true;
+
+        const sliderLength = document.getElementById('slider-length');
+        const sliderGravity = document.getElementById('slider-gravity');
+        const valLength = document.getElementById('val-length');
+        const valGravity = document.getElementById('val-gravity');
+        const calcPeriod = document.getElementById('calc-period');
+        const calcFrequency = document.getElementById('calc-frequency');
+
+        // Physics State
+        let angle = Math.PI / 4; // Initial angle (45 degrees)
+        let angleVel = 0.0;
+        let angleAccel = 0.0;
+        let dt = 0.08; // physics time step
+
+        // Wave trace state
+        let traceHistory = [];
+        const maxTracePoints = 150;
+
+        function togglePendulumPlay() {
+            pendulumPlayState = !pendulumPlayState;
+            const btn = document.getElementById('btn-pendulum-play');
+            const icon = document.getElementById('icon-pendulum-play');
+            const txt = document.getElementById('text-pendulum-play');
+            
+            if (pendulumPlayState) {
+                icon.className = "fa-solid fa-pause";
+                txt.textContent = "Jeda";
+                btn.className = "px-3 py-1.5 rounded-lg bg-blue-600 text-white font-bold text-xs hover:bg-blue-500 transition flex items-center gap-1";
+            } else {
+                icon.className = "fa-solid fa-play";
+                txt.textContent = "Jalankan";
+                btn.className = "px-3 py-1.5 rounded-lg bg-[#0e162f] text-blue-400 font-bold text-xs hover:bg-slate-800 transition flex items-center gap-1 border border-[#1e2a4a]";
+            }
+        }
+
+        function resetPendulumTrace() {
+            traceHistory = [];
+        }
+
+        function animatePendulum() {
+            if (!pendulumRunning) return;
+
+            const L_cm = parseFloat(sliderLength.value);
+            const L = L_cm / 100.0; // scale meters
+            const g = parseFloat(sliderGravity.value);
+
+            // Period and Frequency Math formulas
+            const theoreticalPeriod = 2 * Math.PI * Math.sqrt(L / g);
+            const theoreticalFreq = 1 / theoreticalPeriod;
+
+            valLength.textContent = `${L_cm} cm`;
+            valGravity.textContent = `${g} m/s²`;
+            calcPeriod.textContent = `${theoreticalPeriod.toFixed(2)} s`;
+            calcFrequency.textContent = `${theoreticalFreq.toFixed(2)} Hz`;
+
+            // Draw Pendulum Bob & String
+            pCtx.clearRect(0, 0, pCanvas.width, pCanvas.height);
+
+            const originX = pCanvas.width / 2;
+            const originY = 20;
+            const pixelScale = 0.9; 
+            const drawLength = L_cm * pixelScale;
+
+            if (pendulumPlayState) {
+                // Gravity calculations (Equations of motion: angleAccel = -g/L * sin(theta))
+                angleAccel = -(g / L) * Math.sin(angle);
+                angleVel += angleAccel * dt;
+                angleVel *= 0.9995; // very light drag
+                angle += angleVel * dt;
+
+                // Push new bob horizontal deflection into trace history array
+                // Map bob x-coordinate to a range of -50 to +50
+                const normalizedX = Math.sin(angle) * 50;
+                traceHistory.unshift(normalizedX);
+                if (traceHistory.length > maxTracePoints) {
+                    traceHistory.pop();
+                }
+            }
+
+            const bobX = originX + drawLength * Math.sin(angle);
+            const bobY = originY + drawLength * Math.cos(angle);
+
+            // Ceiling Anchor
+            pCtx.fillStyle = '#475569';
+            pCtx.fillRect(originX - 25, originY - 10, 50, 10);
+
+            // Grid guide path
+            pCtx.strokeStyle = 'rgba(59, 130, 246, 0.15)';
+            pCtx.lineWidth = 1;
+            pCtx.setLineDash([5, 5]);
+            pCtx.beginPath();
+            pCtx.arc(originX, originY, drawLength, Math.PI/2 - 0.7, Math.PI/2 + 0.7);
+            pCtx.stroke();
+            pCtx.setLineDash([]);
+
+            // Equilibrium Reference Axis
+            pCtx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+            pCtx.beginPath();
+            pCtx.moveTo(originX, originY);
+            pCtx.lineTo(originX, originY + drawLength + 20);
+            pCtx.stroke();
+
+            // Support String
+            pCtx.strokeStyle = '#94a3b8';
+            pCtx.lineWidth = 2;
+            pCtx.beginPath();
+            pCtx.moveTo(originX, originY);
+            pCtx.lineTo(bobX, bobY);
+            pCtx.stroke();
+
+            // Swing Bob
+            pCtx.shadowColor = 'rgba(59, 130, 246, 0.4)';
+            pCtx.shadowBlur = 10;
+            pCtx.fillStyle = '#3b82f6';
+            pCtx.beginPath();
+            pCtx.arc(bobX, bobY, 14, 0, Math.PI * 2);
+            pCtx.fill();
+            pCtx.shadowBlur = 0;
+
+            // Render Wave Trace Graph
+            ptCtx.clearRect(0, 0, ptCanvas.width, ptCanvas.height);
+            const centerY = ptCanvas.height / 2;
+
+            // Draw center axes
+            ptCtx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+            ptCtx.lineWidth = 1;
+            ptCtx.beginPath();
+            ptCtx.moveTo(0, centerY);
+            ptCtx.lineTo(ptCanvas.width, centerY);
+            ptCtx.stroke();
+
+            // Draw current wave trace line
+            if (traceHistory.length > 1) {
+                ptCtx.strokeStyle = '#f43f5e';
+                ptCtx.lineWidth = 3;
+                ptCtx.beginPath();
+                
+                const spacingX = ptCanvas.width / maxTracePoints;
+                for (let i = 0; i < traceHistory.length; i++) {
+                    const x = i * spacingX;
+                    const y = centerY + traceHistory[i];
+                    if (i === 0) {
+                        ptCtx.moveTo(x, y);
+                    } else {
+                        ptCtx.lineTo(x, y);
+                    }
+                }
+                ptCtx.stroke();
+
+                // Draw indicator linking bob position to wave start point
+                const currentBobTraceY = centerY + traceHistory[0];
+                ptCtx.fillStyle = '#3b82f6';
+                ptCtx.beginPath();
+                ptCtx.arc(0, currentBobTraceY, 5, 0, Math.PI * 2);
+                ptCtx.fill();
+            }
+
+            requestAnimationFrame(animatePendulum);
+        }
+
+        // ================== WAVE SIMULATOR PHYSICS ==================
+        const wCanvas = document.getElementById('waveCanvas');
+        const wCtx = wCanvas.getContext('2d');
+        let waveRunning = false;
+        let wavePlayState = true;
+        let waveType = 'transversal'; // transversal, longitudinal, stasioner
+
+        const sliderWaveAmp = document.getElementById('slider-wave-amp');
+        const sliderWaveFreq = document.getElementById('slider-wave-freq');
+        const sliderWaveSpeed = document.getElementById('slider-wave-speed');
+        const valWaveAmp = document.getElementById('val-wave-amp');
+        const valWaveFreq = document.getElementById('val-wave-freq');
+        const valWaveSpeed = document.getElementById('val-wave-speed');
+        const chkShowParticle = document.getElementById('chk-show-particle');
+
+        let waveTime = 0.0;
+
+        function toggleWavePlay() {
+            wavePlayState = !wavePlayState;
+            const btn = document.getElementById('btn-wave-play');
+            const icon = document.getElementById('icon-wave-play');
+            const txt = document.getElementById('text-wave-play');
+            
+            if (wavePlayState) {
+                icon.className = "fa-solid fa-pause";
+                txt.textContent = "Jeda Animasi";
+                btn.className = "px-4 py-2 rounded-lg bg-[#800020] hover:bg-[#990026] text-white font-bold text-xs transition flex items-center gap-1.5";
+            } else {
+                icon.className = "fa-solid fa-play";
+                txt.textContent = "Mulai Animasi";
+                btn.className = "px-4 py-2 rounded-lg bg-[#0e162f] text-rose-400 font-bold text-xs hover:bg-slate-800 transition flex items-center gap-1.5 border border-[#1e2a4a]";
+            }
+        }
+
+        function setWaveType(type) {
+            waveType = type;
+            const btnTrans = document.getElementById('btn-wave-trans');
+            const btnLong = document.getElementById('btn-wave-long');
+            const btnStation = document.getElementById('btn-wave-station');
+            const descPanel = document.getElementById('wave-desc-panel');
+
+            // Reset active button styling
+            [btnTrans, btnLong, btnStation].forEach(btn => {
+                btn.className = "px-2 py-1.5 rounded-md font-semibold text-slate-400 hover:text-slate-100 transition";
+            });
+
+            if (type === 'transversal') {
+                btnTrans.className = "px-2 py-1.5 rounded-md font-semibold bg-blue-600 text-white shadow-sm transition";
+                descPanel.innerHTML = `
+                    <span class="font-bold block mb-1">Gelombang Transversal Berjalan (Contoh: Ombak Air, Getaran Tali)</span>
+                    Arah getarnya **tegak lurus** dengan arah rambat gelombang. Memiliki puncak (titik maksimum) dan lembah (titik minimum). Gelombang tampak berjalan mengalir ke kanan.
+                `;
+            } else if (type === 'longitudinal') {
+                btnLong.className = "px-2 py-1.5 rounded-md font-semibold bg-blue-600 text-white shadow-sm transition";
+                descPanel.innerHTML = `
+                    <span class="font-bold block mb-1">Gelombang Longitudinal Berjalan (Contoh: Bunyi di Udara, Slinki)</span>
+                    Arah getarnya **searah / berhimpit** dengan arah rambat. Terdiri dari bagian yang rapat (**Rapatan**) dan bagian renggang (**Renggangan**). Energinya mengalir berjalan ke kanan.
+                `;
+            } else if (type === 'stasioner') {
+                btnStation.className = "px-2 py-1.5 rounded-md font-semibold bg-blue-600 text-white shadow-sm transition";
+                descPanel.innerHTML = `
+                    <span class="font-bold block mb-1">Gelombang Stasioner (Contoh: Senar Gitar, Gelombang Pemantulan)</span>
+                    Gelombang hasil interferensi yang diam di tempat (tidak berjalan maju). Memiliki **Simpul** (titik simpangan nol yang tidak pernah bergetar) dan **Perut** (titik simpangan maksimum).
+                `;
+            }
+        }
+
+        function animateWave() {
+            if (!waveRunning) return;
+
+            const amp = parseFloat(sliderWaveAmp.value);
+            const freq = parseFloat(sliderWaveFreq.value);
+            const speedMultiplier = parseFloat(sliderWaveSpeed.value);
+
+            valWaveAmp.textContent = amp;
+            valWaveFreq.textContent = `${freq} Hz`;
+            valWaveSpeed.textContent = speedMultiplier.toFixed(1);
+
+            wCtx.clearRect(0, 0, wCanvas.width, wCanvas.height);
+
+            if (wavePlayState) {
+                // Adjust animation speed step based on speed multiplier and frequency
+                waveTime += 0.015 * freq * speedMultiplier;
+            }
+
+            const centerY = wCanvas.height / 2;
+            const stepX = 2;
+
+            if (waveType === 'transversal') {
+                // Draw normal Traveling Transverse Wave
+                wCtx.beginPath();
+                wCtx.strokeStyle = '#3b82f6';
+                wCtx.lineWidth = 4;
+                wCtx.lineJoin = 'round';
+
+                for (let x = 0; x < wCanvas.width; x += stepX) {
+                    const waveLengthScale = 140; 
+                    // Equation: y = A * sin(kx - wt)
+                    const y = centerY + amp * Math.sin((x / waveLengthScale) * Math.PI * 2 - waveTime * 4);
+                    
+                    if (x === 0) {
+                        wCtx.moveTo(x, y);
+                    } else {
+                        wCtx.lineTo(x, y);
+                    }
+                }
+                wCtx.stroke();
+
+                // Draw central reference axis
+                wCtx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+                wCtx.lineWidth = 1;
+                wCtx.beginPath();
+                wCtx.moveTo(0, centerY);
+                wCtx.lineTo(wCanvas.width, centerY);
+                wCtx.stroke();
+
+                // Glowing tracker particle (demonstrates that medium doesn't travel horizontally)
+                if (chkShowParticle.checked) {
+                    const trackerX = wCanvas.width * 0.4;
+                    const waveLengthScale = 140;
+                    const trackerY = centerY + amp * Math.sin((trackerX / waveLengthScale) * Math.PI * 2 - waveTime * 4);
+                    
+                    // Draw vertical guide line for particle
+                    wCtx.strokeStyle = 'rgba(244, 63, 94, 0.25)';
+                    wCtx.lineWidth = 1;
+                    wCtx.setLineDash([3, 3]);
+                    wCtx.beginPath();
+                    wCtx.moveTo(trackerX, 20);
+                    wCtx.lineTo(trackerX, wCanvas.height - 20);
+                    wCtx.stroke();
+                    wCtx.setLineDash([]);
+
+                    // Draw the particle
+                    wCtx.fillStyle = '#f43f5e';
+                    wCtx.beginPath();
+                    wCtx.arc(trackerX, trackerY, 8, 0, Math.PI * 2);
+                    wCtx.fill();
+
+                    // Tiny helper text for particles
+                    wCtx.fillStyle = '#f43f5e';
+                    wCtx.font = '10px Poppins';
+                    wCtx.fillText('Partikel Medium (Cuma Naik Turun!)', trackerX - 80, trackerY - 14);
+                }
+
+            } else if (waveType === 'stasioner') {
+                // Draw Standing Wave
+                // Equation: y = 2A * sin(kx) * cos(wt)
+                wCtx.beginPath();
+                wCtx.strokeStyle = '#f43f5e';
+                wCtx.lineWidth = 3;
+                wCtx.setLineDash([4, 4]); // original envelope boundary 1
+                for (let x = 0; x < wCanvas.width; x += stepX) {
+                    const waveLengthScale = 140;
+                    const y = centerY + amp * Math.sin((x / waveLengthScale) * Math.PI * 2);
+                    if (x === 0) wCtx.moveTo(x, y); else wCtx.lineTo(x, y);
+                }
+                wCtx.stroke();
+
+                wCtx.beginPath();
+                wCtx.strokeStyle = '#f43f5e';
+                wCtx.lineWidth = 3;
+                for (let x = 0; x < wCanvas.width; x += stepX) {
+                    const waveLengthScale = 140;
+                    const y = centerY - amp * Math.sin((x / waveLengthScale) * Math.PI * 2);
+                    if (x === 0) wCtx.moveTo(x, y); else wCtx.lineTo(x, y);
+                }
+                wCtx.stroke();
+                wCtx.setLineDash([]);
+
+                // Draw actual real-time standing wave trace
+                wCtx.beginPath();
+                wCtx.strokeStyle = '#3b82f6';
+                wCtx.lineWidth = 4;
+                for (let x = 0; x < wCanvas.width; x += stepX) {
+                    const waveLengthScale = 140;
+                    const y = centerY + amp * Math.sin((x / waveLengthScale) * Math.PI * 2) * Math.cos(waveTime * 4);
+                    if (x === 0) wCtx.moveTo(x, y); else wCtx.lineTo(x, y);
+                }
+                wCtx.stroke();
+
+                // Highlight Nodes (Simpul) & Antinodes (Perut)
+                const waveLengthScale = 140;
+                // Simpul are locations where sin(kx) = 0.
+                // x = 0, lambda/2, lambda, 3lambda/2, etc. (0, 70, 140, 210...)
+                const nodePositions = [0, 70, 140, 210, 280, 350, 420, 490, 560];
+                wCtx.fillStyle = '#f43f5e';
+                wCtx.font = '9px Poppins';
+                nodePositions.forEach(posX => {
+                    wCtx.beginPath();
+                    wCtx.arc(posX, centerY, 5, 0, Math.PI * 2);
+                    wCtx.fill();
+                    wCtx.fillText('Simpul', posX - 15, centerY + 16);
+                });
+
+                // Antinodes (Perut) are locations where |sin(kx)| is max.
+                // x = lambda/4, 3lambda/4, etc. (35, 105, 175...)
+                const antinodePositions = [35, 105, 175, 245, 315, 385, 455, 525];
+                wCtx.fillStyle = '#3b82f6';
+                antinodePositions.forEach(posX => {
+                    const curY = centerY + amp * Math.sin((posX / waveLengthScale) * Math.PI * 2) * Math.cos(waveTime * 4);
+                    wCtx.beginPath();
+                    wCtx.arc(posX, curY, 5, 0, Math.PI * 2);
+                    wCtx.fill();
+                    wCtx.fillText('Perut', posX - 12, curY - 10);
+                });
+
+            } else if (waveType === 'longitudinal') {
+                // Drawing Traveling Longitudinal Wave using particles density
+                const numParticles = 50;
+                const particleSpacing = wCanvas.width / numParticles;
+
+                for (let i = 0; i < numParticles; i++) {
+                    const basePositionX = i * particleSpacing + 10;
+                    
+                    const waveLengthScale = 150;
+                    // Deflection formula: shiftX = Amplitude * sin(kx - wt)
+                    const shiftX = amp * Math.sin((basePositionX / waveLengthScale) * Math.PI * 2 - waveTime * 4);
+                    const posX = basePositionX + shiftX;
+
+                    // Draw vertical visual strings
+                    wCtx.strokeStyle = `rgba(59, 130, 246, ${0.3 + (Math.cos((basePositionX / waveLengthScale) * Math.PI * 2 - waveTime * 4) + 1)/2})`;
+                    wCtx.lineWidth = 3;
+                    wCtx.beginPath();
+                    wCtx.moveTo(posX, centerY - 45);
+                    wCtx.lineTo(posX, centerY + 45);
+                    wCtx.stroke();
+
+                    // Draw individual particle elements
+                    wCtx.fillStyle = '#3b82f6';
+                    wCtx.beginPath();
+                    wCtx.arc(posX, centerY, 5, 0, Math.PI * 2);
+                    wCtx.fill();
+
+                    // Optional tracker indicator on a specific particle
+                    if (chkShowParticle.checked && i === 20) {
+                        wCtx.strokeStyle = '#f43f5e';
+                        wCtx.lineWidth = 1;
+                        wCtx.beginPath();
+                        wCtx.arc(posX, centerY, 10, 0, Math.PI * 2);
+                        wCtx.stroke();
+                        
+                        wCtx.fillStyle = '#f43f5e';
+                        wCtx.font = '10px Poppins';
+                        wCtx.fillText('Getaran Partikel', posX - 35, centerY - 55);
+                    }
+                }
+            }
+
+            requestAnimationFrame(animateWave);
+        }
+
+        // ================== INTERACTIVE KUIS LOGIC (10 SOAL) ==================
+        const quizData = [
+            {
+                number: 1,
+                question: "Sebuah bandul bergerak bolak-balik melalui lintasan A-B-C-B-A. Jika waktu yang dibutuhkan dari titik A ke titik C adalah 0.5 detik, berapakah periode getaran bandul tersebut?",
+                options: [
+                    "0.25 sekon",
+                    "0.50 sekon",
+                    "1.00 sekon",
+                    "2.00 sekon"
+                ],
+                correctIndex: 2,
+                hint: "Lintasan A-C hanya merupakan setengah lintasan getaran utuh (A-C-A).",
+                rationale: "Periode (T) adalah waktu untuk melakukan 1 getaran penuh. Lintasan A ke C adalah setengah getaran. Maka, T = 2 x 0.5 s = 1.00 sekon."
+            },
+            {
+                number: 2,
+                question: "Sebuah garpu tala menghasilkan 120 getaran utuh dalam rentang waktu 3 detik. Berapakah frekuensi bunyi garpu tala tersebut?",
+                options: [
+                    "40 Hz",
+                    "360 Hz",
+                    "0.025 Hz",
+                    "30 Hz"
+                ],
+                correctIndex: 0,
+                hint: "Gunakan rumus frekuensi: f = n / t",
+                rationale: "f = n/t = 120 getaran / 3 sekon = 40 Hz."
+            },
+            {
+                number: 3,
+                question: "Manakah pernyataan di bawah ini yang paling tepat untuk mendefinisikan hubungan antara frekuensi (f) dan periode (T) dalam getaran?",
+                options: [
+                    "Frekuensi selalu sama persis dengan periodenya.",
+                    "Frekuensi berbanding terbalik dengan nilai periodenya.",
+                    "Semakin lama periode, maka frekuensi getaran akan semakin besar.",
+                    "Nilai frekuensi diperoleh dengan mengalikan periode dengan waktu."
+                ],
+                correctIndex: 1,
+                hint: "Lihat rumus hubungannya: f = 1 / T.",
+                rationale: "Hubungan f dan T adalah berbanding terbalik (f = 1/T). Semakin lama waktu satu getaran (T besar), maka jumlah getaran dalam sedetik (f) akan semakin sedikit."
+            },
+            {
+                number: 4,
+                question: "Saat gelombang air merambat melintasi kolam, sebuah benda gabus terapung yang berada di atasnya tampak bergerak naik-turun tanpa berpindah menjauh. Hal ini membuktikan bahwa...",
+                options: [
+                    "Gelombang tidak memiliki energi sama sekali.",
+                    "Gelombang laut hanya dapat memindahkan partikel air.",
+                    "Gelombang hanya memindahkan energi, sedangkan medium perantaranya tidak ikut berpindah.",
+                    "Gabus tidak bermassa sehingga tidak dapat berpindah posisi."
+                ],
+                correctIndex: 2,
+                hint: "Pikirkan tentang sifat paling utama dalam hakekat perambatan gelombang.",
+                rationale: "Gelombang memindahkan energi dari satu tempat ke tempat lain saat merambat, namun medium perantaranya (dalam hal ini air kolam) tidak ikut berpindah menjalar secara neto."
+            },
+            {
+                number: 5,
+                question: "Gelombang yang arah getarannya sejajar atau berhimpit dengan arah perambatannya disebut dengan gelombang...",
+                options: [
+                    "Gelombang Transversal",
+                    "Gelombang Longitudinal",
+                    "Gelombang Elektromagnetik",
+                    "Gelombang Mekanik"
+                ],
+                correctIndex: 1,
+                hint: "Gelombang jenis ini berbentuk rapatan dan renggangan, contohnya suara.",
+                rationale: "Gelombang longitudinal adalah gelombang yang arah getarannya sejajar/searah dengan arah rambatnya, contohnya gelombang bunyi dan pegas/slinki."
+            },
+            {
+                number: 6,
+                question: "Sebuah gelombang transversal merambat dengan frekuensi 10 Hz. Apabila jarak dari puncak gelombang ke puncak berikutnya adalah 2 meter, hitunglah cepat rambat gelombang tersebut!",
+                options: [
+                    "5 m/s",
+                    "12 m/s",
+                    "20 m/s",
+                    "0.2 m/s"
+                ],
+                correctIndex: 2,
+                hint: "Gunakan rumus cepat rambat: v = lambda x f. Jarak puncak ke puncak = lambda.",
+                rationale: "Diketahui lambda = 2 m dan f = 10 Hz. Maka cepat rambat v = lambda x f = 2 x 10 = 20 m/s."
+            },
+            {
+                number: 7,
+                question: "Pada slinki (pegas) yang dimainkan secara dorong-tarik, terbentuk 2 rapatan dan 2 renggangan yang berurutan dalam jarak total 40 cm. Berapakah panjang gelombangnya?",
+                options: [
+                    "10 cm",
+                    "20 cm",
+                    "40 cm",
+                    "80 cm"
+                ],
+                correctIndex: 1,
+                hint: "Satu gelombang longitudinal utuh terdiri dari satu rapatan dan satu renggangan.",
+                rationale: "2 rapatan + 2 renggangan = 2 gelombang penuh. Jarak total = 40 cm. Maka panjang 1 gelombang (lambda) = 40 cm / 2 = 20 cm."
+            },
+            {
+                number: 8,
+                question: "Astronot di luar angkasa tidak dapat saling mendengarkan suara langsung dari mulut temannya tanpa bantuan alat radio nirkabel. Fenomena fisika ini terjadi karena...",
+                options: [
+                    "Gelombang bunyi termasuk gelombang mekanik yang memerlukan zat perantara untuk merambat.",
+                    "Gelombang bunyi terhambat oleh besarnya tarikan gravitasi planet.",
+                    "Suhu di luar angkasa terlalu dingin untuk membekukan getaran pita suara.",
+                    "Gelombang suara tergolong gelombang elektromagnetik berenergi rendah."
+                ],
+                correctIndex: 0,
+                hint: "Luar angkasa adalah daerah vakum (hampa udara).",
+                rationale: "Bunyi adalah gelombang mekanik. Karena luar angkasa hampa udara (vakum), maka tidak ada medium gas untuk merambatkan getaran bunyi tersebut."
+            },
+            {
+                number: 9,
+                question: "Sebuah sumber bunyi bergetar di air dan memancarkan gelombang dengan panjang gelombang 1.5 meter. Jika cepat rambat bunyi di air adalah 1500 m/s, berapakah frekuensi getarannya?",
+                options: [
+                    "1000 Hz",
+                    "2250 Hz",
+                    "1500 Hz",
+                    "100 Hz"
+                ],
+                correctIndex: 0,
+                hint: "Ubah rumus v = lambda x f menjadi f = v / lambda.",
+                rationale: "f = v / lambda = 1500 / 1.5 = 1000 Hz."
+            },
+            {
+                number: 10,
+                question: "Sinar ultraviolet, cahaya tampak, sinar laser, dan pancaran sinyal radar pesawat udara termasuk dalam kategori gelombang...",
+                options: [
+                    "Mekanik",
+                    "Longitudinal",
+                    "Elektromagnetik",
+                    "Infrasonik"
+                ],
+                correctIndex: 2,
+                hint: "Semuanya bisa merambat bebas bahkan di ruang hampa udara.",
+                rationale: "Sinar UV, cahaya tampak, dan radar adalah spektrum gelombang elektromagnetik karena tidak memerlukan medium perantara fisik untuk merambat."
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let userScore = 0;
+        let isAnswered = false;
+
+        function startQuiz() {
+            currentQuestionIndex = 0;
+            userScore = 0;
+            isAnswered = false;
+            
+            document.getElementById('quiz-intro').classList.add('hidden');
+            document.getElementById('quiz-results').classList.add('hidden');
+            document.getElementById('quiz-play').classList.remove('hidden');
+
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            isAnswered = false;
+            const q = quizData[currentQuestionIndex];
+
+            // Reset UI states
+            document.getElementById('current-question-num').textContent = currentQuestionIndex + 1;
+            document.getElementById('quiz-live-score').textContent = userScore;
+            
+            // Progress Bar Scale
+            const progressPercent = ((currentQuestionIndex + 1) / quizData.length) * 100;
+            document.getElementById('quiz-progress-bar').style.width = `${progressPercent}%`;
+
+            // Reset hints
+            document.getElementById('hint-box').classList.add('hidden');
+
+            // Render current question
+            document.getElementById('question-text').textContent = q.question;
+
+            // Render options
+            const optContainer = document.getElementById('options-container');
+            optContainer.innerHTML = '';
+
+            q.options.forEach((optText, index) => {
+                const optButton = document.createElement('button');
+                optButton.className = "w-full text-left p-4 rounded-xl border border-slate-800 hover:border-blue-400 hover:bg-blue-950/20 font-medium text-sm text-slate-200 transition flex justify-between items-center bg-[#050914] group";
+                optButton.onclick = () => selectOption(index, optButton);
+                
+                optButton.innerHTML = `
+                    <span>${optText}</span>
+                    <span class="w-6 h-6 rounded-full border border-slate-700 flex items-center justify-center text-xs group-hover:border-blue-500 bg-[#0c142c] transition font-bold text-slate-400">${String.fromCharCode(65 + index)}</span>
+                `;
+                optContainer.appendChild(optButton);
+            });
+
+            // Hide explanation & disable next button
+            document.getElementById('explanation-container').classList.add('hidden');
+            const nextBtn = document.getElementById('btn-next-question');
+            nextBtn.disabled = true;
+            nextBtn.className = "px-6 py-3 bg-[#050914] text-slate-600 font-bold rounded-xl cursor-not-allowed transition duration-150 border border-slate-850";
+        }
+
+        function showHint() {
+            const hintBox = document.getElementById('hint-box');
+            hintBox.textContent = quizData[currentQuestionIndex].hint;
+            hintBox.classList.remove('hidden');
+        }
+
+        function selectOption(selectedIndex, clickedBtn) {
+            if (isAnswered) return; // Prevent double taps
+            isAnswered = true;
+
+            const q = quizData[currentQuestionIndex];
+            const correctIdx = q.correctIndex;
+            const allButtons = document.getElementById('options-container').querySelectorAll('button');
+
+            // Set button classes reflecting correctness
+            allButtons.forEach((btn, index) => {
+                btn.disabled = true; 
+                const letterBadge = btn.querySelector('span:last-child');
+                
+                if (index === correctIdx) {
+                    // Correct one - styled in Vibrant Blue
+                    btn.className = "w-full text-left p-4 rounded-xl border border-blue-500 bg-blue-950/40 font-bold text-sm text-blue-300 transition flex justify-between items-center";
+                    letterBadge.className = "w-6 h-6 rounded-full bg-blue-500 text-white flex items-center justify-center text-xs font-bold";
+                    letterBadge.innerHTML = "<i class='fa-solid fa-check'></i>";
+                } else if (index === selectedIndex) {
+                    // User's wrong selection - styled in Maroon
+                    btn.className = "w-full text-left p-4 rounded-xl border border-[#be123c] bg-[#4c0519]/40 font-medium text-sm text-rose-300 transition flex justify-between items-center";
+                    letterBadge.className = "w-6 h-6 rounded-full bg-[#be123c] text-white flex items-center justify-center text-xs font-bold";
+                    letterBadge.innerHTML = "<i class='fa-solid fa-xmark'></i>";
+                } else {
+                    // Rest of selections
+                    btn.className = "w-full text-left p-4 rounded-xl border border-[#050914] bg-[#050914]/20 text-slate-500 font-medium text-sm transition flex justify-between items-center";
+                    letterBadge.className = "w-6 h-6 rounded-full border border-slate-800 bg-[#050914] text-slate-600 flex items-center justify-center text-xs";
+                }
+            });
+
+            // Calculate points
+            let isCorrect = selectedIndex === correctIdx;
+            if (isCorrect) {
+                userScore += 10;
+                document.getElementById('quiz-live-score').textContent = userScore;
+            }
+
+            // Expose detailed explanations
+            const explanationPanel = document.getElementById('explanation-container');
+            const explanationText = document.getElementById('explanation-text');
+            const expIcon = document.getElementById('explanation-icon');
+
+            explanationPanel.classList.remove('hidden');
+            explanationText.textContent = q.rationale;
+            
+            if (isCorrect) {
+                expIcon.textContent = "✅";
+                explanationPanel.className = "bg-blue-950/30 p-4 rounded-xl border border-blue-500/20 animate-fade-in text-blue-300";
+            } else {
+                expIcon.textContent = "❌";
+                explanationPanel.className = "bg-[#4c0519]/30 p-4 rounded-xl border border-rose-500/20 animate-fade-in text-rose-300";
+            }
+
+            // Activate Next Button
+            const nextBtn = document.getElementById('btn-next-question');
+            nextBtn.disabled = false;
+            nextBtn.className = "px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-md transition duration-150";
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < quizData.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                showFinalResults();
+            }
+        }
+
+        function showFinalResults() {
+            document.getElementById('quiz-play').classList.add('hidden');
+            document.getElementById('quiz-results').classList.remove('hidden');
+
+            document.getElementById('result-score').textContent = userScore;
+            document.getElementById('result-correct').textContent = `${userScore / 10}/${quizData.length}`;
+
+            const badge = document.getElementById('result-badge');
+            const title = document.getElementById('result-title');
+            const message = document.getElementById('result-message');
+
+            if (userScore >= 80) {
+                badge.className = "w-24 h-24 rounded-full bg-[#4c0519] border border-rose-500/20 flex items-center justify-center mx-auto text-5xl animate-bounce";
+                badge.textContent = "👑";
+                title.textContent = "Luar Biasa Hebat!";
+                message.textContent = "Kamu benar-benar master getaran dan gelombang! Pemahamanmu sangat tajam. Pertahankan prestasimu ya!";
+            } else if (userScore >= 60) {
+                badge.className = "w-24 h-24 rounded-full bg-blue-950 border border-blue-500/20 flex items-center justify-center mx-auto text-5xl";
+                badge.textContent = "👏";
+                title.textContent = "Kerja Bagus!";
+                message.textContent = "Kamu sudah memahami dasar fisika getaran dengan baik. Sedikit belajar lagi di simulator agar mendapat skor sempurna!";
+            } else {
+                badge.className = "w-24 h-24 rounded-full bg-slate-900 border border-slate-700/50 flex items-center justify-center mx-auto text-5xl";
+                badge.textContent = "📚";
+                title.textContent = "Ayo Belajar Lagi!";
+                message.textContent = "Jangan berkecil hati. Mari buka kembali tab Materi dan eksplorasi simulator interaktifnya sekali lagi untuk pemahaman lebih baik.";
+            }
+        }
+
+        // Initialize Application
+        window.onload = function() {
+            // Display default landing page on startup
+            switchTab('beranda');
+        }
+    </script>
+</body>
+</html>
